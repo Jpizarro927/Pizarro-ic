@@ -1,16 +1,19 @@
-name: CI Prueba
+name: CI Python Test
 
 on: [push]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Descargar documentacion
+    - name: Copiar código del repositorio
       uses: actions/checkout@v4
 
-    - name: Ejecutar comando de prueba
-      run: |
-        echo "¡Hola! La integración continua está funcionando correctamente."
-        echo "Este paso verifica que el servidor virtual de GitHub ejecuta tareas automáticamente."
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Ejecutar tests unitarios
+      run: python -m unittest discover
