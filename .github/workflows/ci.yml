@@ -1,0 +1,16 @@
+name: CI Prueba
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar documentacion
+      uses: actions/checkout@v4
+
+    - name: Ejecutar comando de prueba
+      run: |
+        echo "¡Hola! La integración continua está funcionando correctamente."
+        echo "Este paso verifica que el servidor virtual de GitHub ejecuta tareas automáticamente."
